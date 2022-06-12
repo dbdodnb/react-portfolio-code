@@ -1,0 +1,896 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video
+  margin: 0
+  padding: 0
+  border: 0
+  font-size: 100%
+  font: inherit
+  vertical-align: baseline
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section
+  display: block
+
+body
+  line-height: 1
+
+ol, ul
+  list-style: none
+
+blockquote, q
+  quotes: none
+
+blockquote
+  &:before, &:after
+    content: ''
+    content: none
+
+q
+  &:before, &:after
+    content: ''
+    content: none
+
+table
+  border-collapse: collapse
+  border-spacing: 0
+    
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono&family=Work+Sans:wght@300;400;500;600;700;800&display=swap')
+
+/*---values---*/
+$text-color_dark: #241B1C
+$purple: #726A99
+$font-family_subtitle: 'Space Mono', monospace
+$green: #436206
+$white: #ffffff
+$grey: #665e5f
+/*---values---*/
+
+html
+    scroll-behavior: smooth
+    overflow-x: hidden
+    scroll-padding-top: 100px
+
+body
+    font-family: 'Work Sans', sans-serif
+    font-weight: 400
+    background-color: #fff
+
+*
+    color: $text-color_dark
+    line-height: 42px
+    font-weight: 500
+
+@media screen and ( max-width: 790px )
+    html
+        scroll-padding-top: 20px
+
+/*---loading---*/
+.loader-wrapper
+  width: 100%
+  height: 100%
+  position: fixed
+  top: 0
+  left: 0
+  background-color: $grey
+  display: grid
+  place-items: center
+  z-index: 999
+
+.loader
+  border: 5px solid $grey
+  border-top: 16px solid $green
+  border-radius: 50%
+  width: 140px
+  height: 140px
+  animation: spin 1s linear infinite
+  z-index: 999
+
+@keyframes spin
+  0%
+    transform: rotate(0deg)
+
+  100%
+    transform: rotate(360deg)
+/*---loading---*/
+
+/*---general---*/
+// #root
+//     margin-top: 0
+//     div
+//         margin-top: 0
+
+a
+    text-decoration: none
+
+ul
+    list-style-type: none
+
+.container
+    width: 90%
+    margin: 0 auto
+
+@media (min-width: 1920px)
+    .container
+        width: 1700px
+
+.flexSB
+    display: flex
+    align-items: center
+    justify-content: space-between
+    height: 100%
+    margin-top: 0
+
+.logo
+    content: ''
+    width: 66px
+    height: 82%
+    display: inline-block
+    background-repeat: no-repeat
+    background-size: contain
+    background-image: url(../public/logo192.png)
+    margin-left: 0
+
+button
+    background-color: none
+    border: none
+    outline: none
+    font-weight: 700
+    font-size: 18px
+
+.outline-btn
+    border: 2px solid $text-color_dark
+    padding: 14px 36px
+    margin-left: 10px
+    transition: .5s
+    cursor: pointer
+    line-height: normal
+    // background-color: transparent
+    a
+        transition: .5s
+        width: 100%
+        height: 100%
+
+.outline-btn:hover
+    background-color: $text-color_dark
+    a
+        color: $white
+
+.vanta-canvas
+    filter: blur(2px)
+    opacity: 0.6
+
+.section__headline
+    padding: 14px 32px
+    background-color: $grey
+    text-transform: uppercase
+    color: $white
+    font-size: 24px
+    font-family: $font-family_subtitle
+
+.text
+    font-size: 20px
+    margin-top: 50px
+    line-height: 24px
+
+.animate__fadeInUpBig
+    animation-duration: 2s
+
+.flexEnd
+    display: flex
+    justify-content: flex-end
+    li
+        margin-left: 30px
+        &:first-child
+            margin-left: 0
+
+div
+    margin-top: 80px
+
+#hideBurger
+    cursor: pointer
+
+@media screen and ( max-width: 790px )
+    div
+        margin-top: 0
+
+@media screen and ( max-width: 700px )
+    .text
+        margin-top: 25px
+/*---general---*/
+
+/*---modal---*/
+
+/*---modal---*/
+
+/*---header---*/
+header
+    height: 80px
+    line-height: 10vh
+    box-shadow: 0 7px 2px -3px rgba(90, 90, 90, 0.02)
+    width: 100%
+    background-color: #fff
+    z-index: 98
+    position: relative
+    position: fixed
+    top: 0
+
+.nav__link
+    color: $grey
+    font-size: 18px
+    margin: 0 20px
+    font-weight: 500
+    position: relative
+    padding: 0 10px
+    transition: .5s
+    position: relative
+
+.nav__link::before
+    content: ''
+    position: absolute
+    width: 100%
+    height: 2px
+    background-color: $purple
+    top: 28px
+    bottom: 0
+    left: 0
+    transform-origin: right
+    transform: scaleX(0)
+    transition: transform .3s ease-in-out
+  
+.nav__link:hover
+    color: $text-color_dark
+
+.nav__link:hover::before 
+    transform-origin: left
+    transform: scaleX(1)
+
+.nav__link:hover::after
+	height: calc(100% + 8px)
+
+
+.nav_menu
+    display: flex
+    align-items: center
+    justify-content: space-between
+
+.nav_toggler
+    font-size: 20px
+    display: none
+
+@media screen and (max-width: 790px)
+    header
+        position: inherit
+        margin-top: 0
+        height: 60px
+    .nav_toggler
+        display: block
+        margin-top: 0
+    .nav_menu
+        position: absolute
+        top: 60px
+        right: 0
+        height: calc( 100vh - 100px )
+        padding: 20px 0
+        width: 0%
+        flex-direction: column
+        background-color: $purple
+        backdrop-filter: blur(5px)
+        background-blend-mode: 5px
+        transform: translateX(100%)
+        transition: .5s
+        z-index: 999
+        overflow-y: scroll
+        .nav__link
+            color: $white
+
+
+.nav_active
+    transform: translateX(0%)
+    overflow-x: hidden !important
+    width: 100%
+/*---header---*/
+
+/*---main---*/
+main
+    width: 100%
+    height: calc( 100vh - 60px )
+    margin-top: 80px
+    background-color: #f3f3f3
+
+.mainContainer
+    height: 100%
+    display: flex
+    align-items: center
+    flex-wrap: wrap
+    .main__part
+        width: 100%
+        margin-top: 0
+        .main__buttons
+            display: flex
+            align-items: center
+            margin-top: 0
+        .mainButton
+            min-width: 200px
+            height: 30px
+            position: relative
+            display: inline-block
+            margin-left: 20px
+            padding: 12px 27px
+            text-align: center
+            font-size: 18px
+            text-decoration: none
+            border: 2px solid $grey
+            color: $grey
+            cursor: pointer
+            transition: ease-out 0.5s
+            line-height: 30px
+            margin-top: 50px
+            font-weight: 500
+            &:first-child
+                margin-left: 0
+            &::after, &::before
+                position: absolute
+                content: ""
+                width: 0%
+                height: 0%
+                visibility: hidden
+            &::after    
+                bottom: -3px
+                right: -3px
+                border-left: 3px solid $green
+                border-bottom: 3px solid $green
+                transition: width .1s ease .1s, height .1s ease, visibility 0s .2s
+            &::before
+                top: -3px
+                left: -3px
+                border-top: 3px solid $green
+                border-right: 3px solid $green
+                transition: width .1s ease .3s, height .1s ease .2s, visibility 0s .4s
+            &:hover
+                animation: 1s ease-out .4s
+                color: $green
+                font-weight: 600
+                font-size: 20px
+                &::after, &::before
+                    width: calc(100% + 3px)
+                    height: calc(100% + 3px)
+                    visibility: visible
+                    transition: width .1s ease .2s, height .1s ease .3s, visibility 0s .2s
+                &::after
+                    transition: width .1s ease .2s, height .1s ease .3s, visibility 0s .2s
+                &::before
+                    transition: width .1s ease, height .1s ease .1s
+    .main__info
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+        line-height: 83px
+        margin-top: 0
+        p
+            width: 100%
+        .main__headline
+            font-size: 48px
+            font-weight: 800
+            color: $purple
+        .main__subheading
+            font-family: $font-family_subtitle
+            font-size: 36px
+
+@media screen and ( max-width: 790px )
+    main
+        margin-top: 0
+    
+
+@media screen and ( max-width: 600px )
+    .main__buttons
+        flex-wrap: wrap
+    .mainButton
+        width: 60%
+    .mainContainer .main__part .mainButton
+        margin-left: 0
+
+@media screen and ( max-height: 600px )
+    main
+        height: 600px
+    .mainContainer .main__part .mainButton
+        margin-top: 25px
+
+@media screen and ( max-width: 450px )
+    main
+        height: 650px
+/*---about---*/
+.about
+    width: 100%
+    box-shadow: 0 0 7px rgba(90, 90, 90, 0.02)
+    min-height: 300px
+    margin-top: 50px
+    .aboutContainer
+        width: 80%
+        min-height: 300px
+        background-color: #f3f3f3
+        padding: 30px
+        display: flex
+        margin: 0 auto
+        div
+            min-height: 300px
+            margin-top: 0
+        .about__photo
+            background-image: url(../public/img/about.jpg)
+            background-size: contain
+            background-repeat: no-repeat
+            background-position-x: center
+            background-position-y: top
+            width: 40%
+            height: 400px
+        .about__content
+            width: 60%
+            display: flex
+            flex-direction: column
+            padding-left: 50px
+            .text a
+                text-decoration: underline
+                display: inline-block
+                color: $green
+
+@media (min-width: 1920px)
+    .about .aboutContainer
+        width: 1450px
+
+@media screen and ( max-width: 1100px )
+    .about .aboutContainer
+        flex-wrap: wrap
+        flex-direction: column-reverse
+        align-items: center
+    .about .aboutContainer .about__content, .about .aboutContainer .about__photo
+        width: 100%
+        padding-left: 0
+    .about .aboutContainer .about__photo
+        margin-top: 50px
+    
+@media screen and ( max-width: 400px )
+    .about .aboutContainer .about__photo
+        height: 350px
+
+@media screen and ( max-width: 360px )
+    .about .aboutContainer .about__photo
+        height: 300px
+    
+
+/*---about---*/
+
+/*---skills---*/
+.skills
+    width: 100%
+    min-height: 400px
+    margin-top: 50px
+    background-color: #f3f3f3
+    .skillsContainer
+        display: flex
+        min-height: 400px
+        display: flex
+        justify-content: space-between
+        padding: 30px
+        div
+            margin-top: 0
+        .left
+            width: 30%
+        .right
+            width: 65%
+            display: flex
+            flex-direction: column
+            justify-content: space-between
+            .traits
+                width: 100%
+                min-height: 150px
+                display: grid
+                grid-template-columns: 1fr 1fr 1fr 1fr
+                div
+                    display: flex
+                    flex-direction: column
+                    align-items: center
+                    justify-content: space-between
+                    background-repeat: no-repeat
+                    background-position-x: center
+                    background-position-y: bottom
+                    background-size: 40%
+                    position: relative
+                    &:first-child
+                        background-image: url(../public/img/skills/traits/fast.svg)
+                        background-size: 50%
+                        &::after
+                            content: 'Fast'
+                            position: absolute
+                            font-size: 22px
+                            font-weight: 600
+                            top: 175px
+                    &:nth-child(2)
+                        background-image: url(../public/img/skills/traits/dynamic.svg)
+                        &::after
+                            content: 'Dynamic'
+                            position: absolute
+                            font-size: 22px
+                            font-weight: 600
+                            top: 175px
+                    &:nth-child(3)
+                        background-image: url(../public/img/skills/traits/adaptive.svg)
+                        &::after
+                            content: 'Adaptive'
+                            position: absolute
+                            font-size: 22px
+                            font-weight: 600
+                            top: 175px
+                    &:last-child
+                        background-image: url(../public/img/skills/traits/intuitive.svg)
+                        &::after
+                            content: 'Intuitive'
+                            position: absolute
+                            font-size: 22px
+                            font-weight: 600
+                            top: 175px
+            .progress
+                margin-top: 75px
+                width: 100%
+                min-height: 300px
+                display: flex
+                flex-direction: column
+                justify-content: space-around
+                align-items: center
+                .progress-bar
+                    width: 75%
+                    height: 5px
+                    background-color: #d3d3d3
+                    position: relative
+                    display: flex
+                    align-items: center
+                    .progress-bar_fill
+                        height: 100%
+                        background-color: $green
+                        transition: 1.1s 0.2s width ease-in-out
+                        &-90
+                            width: 90%
+                        &-55
+                            width: 55%
+                        &-10
+                            width: 10%
+                        &-70
+                            width: 70% 
+                .progress-bar::before, .progress-bar::after
+                    content: ''
+                    display: block
+                    width: 35px
+                    height: 35px
+                    background-position: center
+                    background-repeat: no-repeat
+                    background-size: contain
+                    position: absolute
+                .progress-bar::before
+                    left: -75px
+                    &:active
+                        transform: scale(0.9)
+                .progress-bar::after
+                    right: -75px
+                    font-size: 22px
+                    font-family: $font-family_subtitle
+                    top: calc( 50% - 11px )
+                .progress-bar:first-child::before
+                    background-image: url(../public/img/skills/icons/html.svg)   
+                .progress-bar:nth-child(2)::before    
+                    background-image: url(../public/img/skills/icons/sass.svg) 
+                .progress-bar:nth-child(3)::before    
+                    background-image: url(../public/img/skills/icons/js.svg) 
+                .progress-bar:nth-child(4)::before    
+                    background-image: url(../public/img/skills/icons/react.svg) 
+                .progress-bar:last-child::before    
+                    background-image: url(../public/img/skills/icons/figma.svg) 
+                .progress-bar:first-child::after, .progress-bar:nth-child(2)::after  
+                    content: '90%'  
+                .progress-bar:nth-child(3)::after    
+                    content: '55%'
+                .progress-bar:nth-child(4)::after    
+                    content: '10%'
+                .progress-bar:last-child::after   
+                    content: '70%'
+
+@media screen and ( max-width: 1300px )
+    .skills .skillsContainer
+        padding: 30px 0
+    .skills .skillsContainer .right .traits
+        grid-template-columns: 1fr 1fr
+        min-height: 600px
+        div
+            background-position: center
+            background-size: 30%
+            &:first-child
+                background-size: 40%
+
+    .skills .skillsContainer .right .traits div:first-child::after
+        top: 260px
+    .skills .skillsContainer .right .traits div:nth-child(2)::after
+        top: 260px
+    .skills .skillsContainer .right .traits div:nth-child(3)::after
+        top: 260px
+    .skills .skillsContainer .right .traits div:last-child::after
+        top: 260px
+
+    .skills .skillsContainer .left
+        width: 100%
+    .skills .skillsContainer .right
+        width: 100%
+
+    .skills .skillsContainer
+        flex-wrap: wrap
+
+@media screen and ( max-width: 1200px )
+    .skills .skillsContainer .right .traits
+        width: 80%
+        margin: 0 auto
+        div
+            background-size: 35%
+            &:first-child
+                background-size: 45%
+
+@media screen and ( max-width: 800px )
+    .skills .skillsContainer .right .traits
+        width: 90%
+        margin: 0 auto
+        div
+            background-size: 45%
+            &:first-child
+                background-size: 55%
+    
+@media screen and ( max-width: 600px )
+    .skills .skillsContainer .right .traits
+        width: 90%
+        margin: 0 auto
+        div
+            background-size: 55%
+            &:first-child
+                background-size: 65%
+
+    .skills .skillsContainer .right .progress
+        width: 85%
+        margin: auto
+        margin-top: 50px
+    
+@media screen and ( max-width: 500px )
+    .skills .skillsContainer .right .traits
+        grid-template-columns: 1fr 
+        min-height: 1100px
+        div
+            background-position: center
+            background-size: 40%
+            &:first-child
+                background-size: 50%
+    
+    .skills .skillsContainer .right .progress
+        width: 75%
+
+@media screen and ( max-width: 360px )
+    .skills .skillsContainer .right .traits
+        grid-template-columns: 1fr 
+        min-height: 1100px
+        div
+            background-position: center
+            background-size: 45%
+            &:first-child
+                background-size: 55%
+    
+    .skills .skillsContainer .right .progress
+        width: 70%
+/*---skills---*/
+
+/*---portfolio---*/
+.portfolio
+    width: 100%
+    min-height: 500px
+    margin-top: 50px
+    .content
+        width: 100%
+        min-height: 400px
+        display: grid
+        grid-template-columns: 1fr 1fr 1fr
+        justify-content: space-between
+        grid-column-gap: 40px
+        grid-row-gap: 40px
+        margin-top: 50px
+        transition: .3s
+        .saferoom
+            background-image: url(../public/img/portfolio/saferoom.jpg)
+            background-position: center
+            background-size: contain
+            background-repeat: no-repeat
+        .soon
+            background-image: url(../public/logo512.png)
+            background-position: center
+            background-size: contain
+            background-repeat: no-repeat
+
+.links
+    margin-top: 0
+
+.content div
+    margin-top: 0
+        
+.content div .overlay
+    width: 100%
+    height: 400px
+    display: flex
+    flex-direction: column
+    // align-items: center
+    justify-content: space-between
+    transition: .3s
+    opacity: 1
+    p, a
+        // color: $white
+        padding-left: 17px
+    a
+        text-decoration: underline
+        font-size: 24px
+        color: $white
+        display: none
+        transition: .3s
+    p
+        margin: 0
+        background-color: $purple
+        width: 100%
+        padding: 17px 0 17px 17px
+        box-sizing: border-box
+        color: $white
+    &:hover
+        background-color: rgba(36, 27, 28, 0.6)
+    &:hover a
+        display: block
+            
+
+    .portfolio__title
+        font-size: 32px
+        font-weight: 600
+        
+.portfolio__pagination-item .portfolio__link
+    cursor: pointer
+    transition: .3s
+    padding: 5px 0
+    &:hover, &_active
+        padding: 5px 15px
+        background-color: $text-color_dark
+        color: $white
+
+@media screen and ( max-width: 1200px )
+    .portfolio .content
+        grid-template-columns: 1fr 1fr
+        div
+            height: 450px
+    
+@media screen and ( max-width: 700px )
+    .links
+        margin-top: 20px
+    
+@media screen and ( max-width: 600px )
+    .portfolio .content
+        grid-template-columns: 1fr
+
+@media screen and ( max-width: 400px )
+    .flexEnd
+        justify-content: center
+        .portfolio__pagination-item
+            margin-left: 15px
+/*---portfolio---*/
+    
+/*---contact---*/
+.contact
+    width: 100%
+    min-height: 400px
+    margin-top: 50px
+    background-color: #f3f3f3
+    padding: 30px 0
+    form
+        width: 55%
+        margin: 0 auto
+        display: flex
+        flex-direction: column
+        align-items: center
+        .contact__input
+            width: 100%
+            height: 50px
+            padding: 10px 15px
+            box-sizing: border-box
+            margin-top: 25px
+            border: none
+            outline: 1px solid $text-color_dark
+            font-size: 18px
+            font-family: $font-family_subtitle
+            &:first-child
+                margin-top: 50px
+            &:focus
+                outline: 2px solid $green
+        textarea
+            resize: none
+            width: 100%
+            padding: 10px 15px
+            box-sizing: border-box
+            margin-top: 25px
+            height: 200px
+            border: none
+            outline: 1px solid $text-color_dark
+            font-size: 18px
+            font-family: $font-family_subtitle
+            &:focus
+                outline: 2px solid $green
+        .contact__button
+            outline: none
+            border: 2px solid $text-color_dark
+            background: transparent
+            cursor: pointer
+            font-size: 18px
+            font-weight: 700
+            padding: 5px 40px
+            margin-top: 25px
+            transition: .5s
+            &:hover
+                color: $white
+                background-color: $text-color_dark
+    .contact__info
+        width: 30%
+        min-height: 400px
+        display: flex
+        flex-direction: column
+        .contact__heading
+            font-size: 24px
+            font-weight: 600
+            margin-top: 50px
+            &:first-child
+                margin-top: 0
+        .contact__link
+            font-size: 18px
+            margin-top: 25px
+            text-decoration: underline
+            font-weight: 500
+        .social
+            width: 100%
+            display: flex
+            height: 40px
+            margin-top: 25px
+            &__link
+                width: 40px
+                height: 40px
+                display: block
+                background-repeat: no-repeat
+                background-position: center
+                background-size: contain
+                margin-left: 40px
+                &:first-child
+                    background-image: url(../public/img/logos/instagram.svg)
+                    margin-left: 0
+                &:nth-child(2)
+                    background-image: url(../public/img/logos/facebook.svg)
+                &:nth-child(3)
+                    background-image: url(../public/img/logos/linkedin.svg)
+                &:last-child
+                    background-image: url(../public/img/logos/github.svg)
+
+@media screen and ( max-width: 790px )
+    .contact__info
+        margin-top: 40px
+    
+
+@media screen and ( max-width: 1100px )
+    .contact .contactContainer .flexSB
+        flex-wrap: wrap
+    .contact .contactContainer .flexSB form, .contact .contactContainer .flexSB .contact__info
+        width: 100%
+        min-height: 300px
+    
+/*---contact---*/
+
+/*---footer---*/
+.footer
+    width: 100%
+    height: 70px
+    background-color: $purple
+    display: flex
+    align-items: center
+    justify-content: center
+    text-align: center
+    margin-top: 0
+    .text
+        margin-top: 0
+        color: $white
+/*---footer---*/
